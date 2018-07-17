@@ -3,8 +3,10 @@
     src: url('fonts/WildYouth-Regular.otf') format('opentype');
 }
 
-$background-medium-gray: #292929;
 $background-dark-gray: #1a1a1a;
+$background-medium-gray: #292929;
+$background-light-gray: #e2e2e2;
+$background-extra-light-gray: #fbfbfb;
 $text-accent-color: #e4bb7a;
 $buttons-color: #e4bb7a;
 $break-large: 1100px;
@@ -15,9 +17,13 @@ body {
 
 .container {
     section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         padding-bottom: 50px;
     }
     h1 {
+        text-align: center;
         text-transform: uppercase;
         font: {
             family: 'Montserrat', sans-serif;
@@ -28,6 +34,7 @@ body {
         margin-top: 0;
     }
     h2 {
+        text-align: center;
         font: {
             family: 'WildYouth';
             size: 35px;
@@ -35,6 +42,23 @@ body {
         color: $text-accent-color;
         margin-bottom: 2px;
         margin-top: 80px;
+    }
+    .name-text {
+        text-transform: uppercase;
+        letter-spacing: 1pt;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .accent-text {
+        font-family: 'Average', sans-serif;
+        margin-top: 3px;
+        font-size: 13px;
+        color: $text-accent-color;
+        margin-bottom: 0;
+        margin-top: 0;
     }
     .description {
         font-family: 'Average', sans-serif;
@@ -47,6 +71,69 @@ body {
             width: 90%;
         }
     }
+    .about-us {
+        background-color: $background-light-gray;
+        .block {
+            width: 70%;
+            height: 350px;
+            display: grid;
+            grid-column-gap: 30px;
+            grid-template: 1fr / 250px 250px 1fr;
+            align-items: center;
+            margin-top: 40px;
+            .rectangle {
+                z-index: 1;
+                background-color: $background-medium-gray;
+                height: 100%;
+            }
+            .white-rectangle {
+                z-index: 2;
+                position: absolute;
+                height: 160px;
+                width: 500px;
+                top: 80px;
+                right: 13%;
+                padding: 50px;
+                text-align: left;
+                background-color: white;
+                @media screen and(max-width: $break-small) {
+                    padding: 20px;
+                    width: 73%;
+                    height: auto;
+                    text-align: center;
+                    right: 10%;
+                }
+            }
+            .gold-frame {
+                position: absolute;
+                height: 200px;
+                width: 400px;
+                top: 60px;
+                right: 27%;
+                padding: 50px;
+                text-align: left;
+                border: {
+                    style: solid;
+                    width: 2px;
+                    color: $text-accent-color;
+                }
+                @media screen and(max-width: $break-small) {
+                    padding: 20px;
+                    width: 73%;
+                    text-align: center;
+                    right: 2%;
+                }
+            }
+        }
+        .text--about-us {
+            text-align: left;
+            width: auto;
+            margin-bottom: 0;
+        }
+        .h2--about-us {
+            margin-top: 0;
+        }
+    }
     .menu {
         display: flex;
         flex-direction: column;
@@ -57,14 +144,9 @@ body {
         .menu-items {
             display: grid;
             grid-template: repeat(5, 1fr) / 1fr 1fr;
-            width: 1000px;
             grid-column-gap: 40px;
             grid-row-gap: 35px;
             .menu-item {
-                p {
-                    margin-bottom: 0;
-                    margin-top: 0;
-                }
                 .texts {
                     display: flex;
                     justify-content: space-between;
@@ -77,20 +159,6 @@ body {
                 grid-template-columns: 1fr 5fr;
                 grid-column-gap: 20px;
                 align-items: center;
-                font-family: 'Montserrat',
-                sans-serif;
-                font-size: 13px;
-                font-weight: 700;
-                .dish-name {
-                    text-transform: uppercase;
-                    letter-spacing: 1pt;
-                }
-                .dish-description {
-                    font-family: 'Average', sans-serif;
-                    margin-top: 3px;
-                    font-size: 13px;
-                    color: $text-accent-color;
-                }
                 .circular-thumbnail {
                     border-radius: 50%;
                     overflow: hidden;
@@ -117,11 +185,6 @@ body {
                 width: 80%;
             }
         }
-    }
-    .reservation {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
     .opening-hours {
         display: flex;
@@ -180,6 +243,79 @@ body {
             }
         }
     }
+    .our-chefs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: $background-medium-gray;
+        color: white;
+        .chefs {
+            margin: 30px -15px 0 -15px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 70%;
+            justify-content: space-between;
+            @media screen and (max-width: $break-small) {
+                justify-content: center;
+            }
+            .chef {
+                margin: 0 15px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 200px;
+                .img-container {
+                    width: 200px;
+                    height: 200px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    margin-bottom: 30px;
+                }
+                img {
+                    height: 100%;
+                    width: auto;
+                }
+                .img--vertical {
+                    width: 100%;
+                    height: auto;
+                }
+                .icons {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 30%;
+                    margin: 30px 0;
+                    color: $text-accent-color;
+                    font-size: 12px;
+                }
+                .description--chef {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .subscribe {
+        background-color: $background-extra-light-gray;
+        padding: 80px 0;
+        .block {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+.arrow {
+    margin: 10px 3px 30px 3px;
+}
+
+input {
+    box-sizing: border-box;
+    padding: 12px 20px;
+    margin: 3px 5px;
 }
 
 button {
@@ -193,4 +329,5 @@ button {
         size: 12px;
     }
     padding: 15px 20px;
+    margin: 3px 5px;
 }
