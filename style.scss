@@ -1,0 +1,196 @@
+@font-face {
+    font-family: 'WildYouth';
+    src: url('fonts/WildYouth-Regular.otf') format('opentype');
+}
+
+$background-medium-gray: #292929;
+$background-dark-gray: #1a1a1a;
+$text-accent-color: #e4bb7a;
+$buttons-color: #e4bb7a;
+$break-large: 1100px;
+$break-small: 700px;
+body {
+    margin: 0;
+}
+
+.container {
+    section {
+        padding-bottom: 50px;
+    }
+    h1 {
+        text-transform: uppercase;
+        font: {
+            family: 'Montserrat', sans-serif;
+            weight: 700;
+            size: 20pt;
+        }
+        letter-spacing: 5px;
+        margin-top: 0;
+    }
+    h2 {
+        font: {
+            family: 'WildYouth';
+            size: 35px;
+        }
+        color: $text-accent-color;
+        margin-bottom: 2px;
+        margin-top: 80px;
+    }
+    .description {
+        font-family: 'Average', sans-serif;
+        line-height: 1.6;
+        font-size: 13px;
+        text-align: center;
+        width: 550px;
+        margin: 0 0 50px 0;
+        @media screen and (max-width: $break-small) {
+            width: 90%;
+        }
+    }
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        background-color: $background-medium-gray;
+        color: white;
+        .menu-items {
+            display: grid;
+            grid-template: repeat(5, 1fr) / 1fr 1fr;
+            width: 1000px;
+            grid-column-gap: 40px;
+            grid-row-gap: 35px;
+            .menu-item {
+                p {
+                    margin-bottom: 0;
+                    margin-top: 0;
+                }
+                .texts {
+                    display: flex;
+                    justify-content: space-between;
+                    .price {
+                        margin-right: 15px;
+                        margin-left: 15px;
+                    }
+                }
+                display: grid;
+                grid-template-columns: 1fr 5fr;
+                grid-column-gap: 20px;
+                align-items: center;
+                font-family: 'Montserrat',
+                sans-serif;
+                font-size: 13px;
+                font-weight: 700;
+                .dish-name {
+                    text-transform: uppercase;
+                    letter-spacing: 1pt;
+                }
+                .dish-description {
+                    font-family: 'Average', sans-serif;
+                    margin-top: 3px;
+                    font-size: 13px;
+                    color: $text-accent-color;
+                }
+                .circular-thumbnail {
+                    border-radius: 50%;
+                    overflow: hidden;
+                    width: 60px;
+                    height: 60px;
+                    .horizontal {
+                        width: auto;
+                        height: 100%;
+                        margin-left: -15px;
+                    }
+                    .vertical {
+                        width: 100%;
+                        height: auto;
+                        margin-top: -15px;
+                    }
+                }
+            }
+            @media screen and (max-width: $break-large) {
+                grid-template: repeat(10, 1fr) / 1fr;
+                width: 60%;
+            }
+            @media screen and (max-width: $break-small) {
+                grid-template: repeat(10, 1fr) / 1fr;
+                width: 80%;
+            }
+        }
+    }
+    .reservation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .opening-hours {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $background-dark-gray;
+        color: white;
+        .block {
+            display: grid;
+            justify-content: space-between;
+            grid-template: 1fr / 2fr 300px;
+            overflow: hidden;
+            height: 300px;
+            width: 70%;
+            margin-top: 50px;
+            @media screen and (max-width: $break-small) {
+                grid-template: 1fr / 0 300px;
+                width: 300px;
+            }
+            background-color: white;
+            ;
+            .img-container {
+                overflow: hidden;
+                img {
+                    height: 200%;
+                    margin-top: -275px;
+                }
+            }
+            .hours-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                box-sizing: border-box;
+                height: 284px;
+                margin: 8px;
+                padding: 20px;
+                .main-text {
+                    text-transform: uppercase;
+                    font: {
+                        family: 'Montserrat', sans-serif;
+                        weight: 500;
+                    }
+                }
+                border: {
+                    style: solid;
+                    color: black;
+                    width: 1px;
+                }
+                color: black;
+                text-align: center;
+                p {
+                    font-family: 'Average', sans-serif;
+                    line-height: 1.6;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}
+
+button {
+    background-color: $buttons-color;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    font: {
+        family: 'Montserrat', sans-serif;
+        weight: 600;
+        size: 12px;
+    }
+    padding: 15px 20px;
+}
