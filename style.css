@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: 'WildYouth';
   src: url("fonts/WildYouth-Regular.otf") format("opentype");
@@ -62,7 +63,7 @@ h2 {
 
 .description--slider {
   text-align: left;
-  width: 400px;
+  max-width: 400px;
 }
 
 section,
@@ -82,6 +83,12 @@ header {
 
 header {
   padding-bottom: 0px;
+}
+
+header input {
+  position: absolute;
+  opacity: 0;
+  z-index: -2;
 }
 
 header .bar {
@@ -105,15 +112,66 @@ header .navbar {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+header .navbar-navigation {
+  margin: 0 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 65px;
+  overflow: hidden;
   text-transform: uppercase;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 600;
+  -webkit-transition: height 0.4s;
+  transition: height 0.4s;
 }
 
 header .nav-element {
-  text-align: center;
   margin: 25px 20px;
+}
+
+header .hamburger-icon {
+  position: absolute;
+  right: 0;
+  visibility: hidden;
+  font-size: 14px;
+}
+
+header .hamburger-icon::after {
+  content: "▼";
+}
+
+@media screen and (max-width: 700px) {
+  header .hamburger-icon {
+    visibility: visible;
+  }
+}
+
+header .toggle:checked ~ .navbar .navbar-navigation {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  height: 350px;
+  text-align: center;
+  -webkit-transition: height 1s;
+  transition: height 1s;
+}
+
+header .toggle:checked ~ .navbar .hamburger-icon::after {
+  content: "▲";
+  visibility: visible;
 }
 
 .checkboxes {
@@ -132,11 +190,6 @@ header .nav-element {
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin: 20px;
-}
-
-.checkboxes input {
-  position: absolute;
-  opacity: 0;
 }
 
 .checkboxes .checkbox-container {
@@ -250,6 +303,7 @@ header .nav-element {
 
 .about-us {
   position: relative;
+  overflow: hidden;
   background-color: #e2e2e2;
 }
 

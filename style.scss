@@ -72,7 +72,7 @@ h2 {
 
 .description--slider {
     text-align: left;
-    width: 400px;
+    max-width: 400px;
 }
 
 section,
@@ -84,6 +84,11 @@ header {
 }
 
 header {
+    input {
+        position: absolute;
+        opacity: 0;
+        z-index: -2;
+    }
     padding-bottom: 0px;
     .bar {
         color: $background-medium-gray;
@@ -96,14 +101,47 @@ header {
     .navbar {
         display: flex;
         flex-direction: row;
+    }
+    .navbar-navigation {
+        margin: 0 30px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 65px;
+        overflow: hidden;
         text-transform: uppercase;
         font-family: 'Montserrat', sans-serif;
         font-size: 12px;
         font-weight: 600;
+        transition: height 0.4s;
     }
     .nav-element {
-        text-align: center;
         margin: 25px 20px;
+    }
+    .hamburger-icon {
+        position: absolute;
+        right: 0;
+        visibility: hidden;
+        font-size: 14px;
+        &::after {
+            content: "▼";
+        }
+        @media screen and (max-width: $break-small) {
+            visibility: visible;
+        }
+    }
+    .toggle:checked~.navbar {
+        .navbar-navigation {
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: 350px;
+            text-align: center;
+            transition: height 1s;
+        }
+        .hamburger-icon::after {
+            content: "▲";
+            visibility: visible;
+        }
     }
 }
 
@@ -115,10 +153,6 @@ header {
     align-items: center;
     align-self: flex-end;
     margin: 20px;
-    input {
-        position: absolute;
-        opacity: 0;
-    }
     .checkbox-container {
         margin: 20px;
     }
@@ -210,6 +244,7 @@ header {
 
 .about-us {
     position: relative;
+    overflow: hidden;
     background-color: $background-light-gray;
     .block {
         width: 70%;
