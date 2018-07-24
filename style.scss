@@ -117,6 +117,7 @@ header {
     }
     .nav-element {
         margin: 25px 20px;
+        cursor: pointer;
     }
     .hamburger-icon {
         position: absolute;
@@ -134,7 +135,7 @@ header {
         .navbar-navigation {
             flex-direction: column;
             flex-wrap: nowrap;
-            height: 350px;
+            height: 405px;
             text-align: center;
             transition: height 1s;
         }
@@ -248,24 +249,38 @@ header {
     background-color: $background-light-gray;
     .block {
         width: 70%;
-        height: 400px;
+        height: 450px;
         display: grid;
         grid-column-gap: 30px;
-        grid-template: 1fr / 250px 250px 1fr;
+        grid-template: 1fr / 270px 270px 1fr;
         align-items: center;
         margin-top: 40px;
         .rectangle {
             z-index: 1;
             background-color: $background-medium-gray;
             height: 100%;
+            overflow: hidden;
+            @media screen and(max-width: $break-small) {
+                visibility: hidden;
+            }
+        }
+        .rectangle--first {
+            background: url('img/coffee-918926_1920.jpg');
+            background-size: cover;
+            background-position: bottom center;
+        }
+        .rectangle--second {
+            background: url('img/kitchen-731351_1920.jpg');
+            background-size: cover;
+            background-position: bottom left;
         }
         .white-rectangle {
             z-index: 2;
             position: absolute;
-            height: 200px;
-            width: 500px;
-            top: 80px;
-            right: 13%;
+            height: 225px;
+            width: 560px;
+            top: 100px;
+            right: 3%;
             padding: 50px;
             text-align: left;
             background-color: white;
@@ -274,17 +289,19 @@ header {
                 width: 73%;
                 height: auto;
                 text-align: center;
-                right: 10%;
+                right: 0;
+                left: 0;
+                margin: auto;
             }
             @media screen and(min-width: $break-large) {
-                right: 27%;
+                right: 21%;
             }
         }
         .gold-frame {
             position: absolute;
-            height: 240px;
-            width: 400px;
-            top: 60px;
+            height: 270px;
+            width: 300px;
+            top: 75px;
             right: 27%;
             padding: 50px;
             text-align: left;
@@ -294,13 +311,11 @@ header {
                 color: $text-accent-color;
             }
             @media screen and(max-width: $break-small) {
-                padding: 20px;
-                width: 73%;
-                text-align: center;
-                right: 2%;
+                visibility: hidden;
             }
             @media screen and(min-width: $break-large) {
-                right: 35%;
+                right: 24%;
+                width: 500px;
             }
         }
     }
@@ -329,6 +344,12 @@ header {
         @media screen and (min-width: $break-large) {
             width:67%;
         }
+        .animate-left {
+            animation: from-left 1s;
+        }
+        .animate-right {
+            animation: from-right 1s;
+        }
         .menu-item {
             .texts {
                 display: flex;
@@ -341,6 +362,7 @@ header {
                     margin-left: 15px;
                 }
             }
+            transition: all 1s ease-in-out;
             display: grid;
             grid-template-columns: 1fr 5fr;
             grid-column-gap: 20px;
@@ -348,8 +370,8 @@ header {
             .circular-thumbnail {
                 border-radius: 50%;
                 overflow: hidden;
-                width: 60px;
-                height: 60px;
+                width: 70px;
+                height: 70px;
                 .horizontal {
                     width: auto;
                     height: 100%;
@@ -534,5 +556,38 @@ button {
     width: 117px;
     img {
         width: 100%;
+    }
+}
+
+@keyframes upword {
+    from {
+        transform: translate(-30px, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes from-left {
+    from {
+        transform: translate(-20%, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes from-right {
+    from {
+        transform: translate(20%, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
     }
 }

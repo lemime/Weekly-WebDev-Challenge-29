@@ -137,6 +137,7 @@ header .navbar-navigation {
 
 header .nav-element {
   margin: 25px 20px;
+  cursor: pointer;
 }
 
 header .hamburger-icon {
@@ -163,7 +164,7 @@ header .toggle:checked ~ .navbar .navbar-navigation {
           flex-direction: column;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  height: 350px;
+  height: 405px;
   text-align: center;
   -webkit-transition: height 1s;
   transition: height 1s;
@@ -309,13 +310,13 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
 
 .about-us .block {
   width: 70%;
-  height: 400px;
+  height: 450px;
   display: -ms-grid;
   display: grid;
   grid-column-gap: 30px;
   -ms-grid-rows: 1fr;
-  -ms-grid-columns: 250px 250px 1fr;
-      grid-template: 1fr / 250px 250px 1fr;
+  -ms-grid-columns: 270px 270px 1fr;
+      grid-template: 1fr / 270px 270px 1fr;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -326,15 +327,34 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
   z-index: 1;
   background-color: #292929;
   height: 100%;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 700px) {
+  .about-us .block .rectangle {
+    visibility: hidden;
+  }
+}
+
+.about-us .block .rectangle--first {
+  background: url("img/coffee-918926_1920.jpg");
+  background-size: cover;
+  background-position: bottom center;
+}
+
+.about-us .block .rectangle--second {
+  background: url("img/kitchen-731351_1920.jpg");
+  background-size: cover;
+  background-position: bottom left;
 }
 
 .about-us .block .white-rectangle {
   z-index: 2;
   position: absolute;
-  height: 200px;
-  width: 500px;
-  top: 80px;
-  right: 13%;
+  height: 225px;
+  width: 560px;
+  top: 100px;
+  right: 3%;
   padding: 50px;
   text-align: left;
   background-color: white;
@@ -346,21 +366,23 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
     width: 73%;
     height: auto;
     text-align: center;
-    right: 10%;
+    right: 0;
+    left: 0;
+    margin: auto;
   }
 }
 
 @media screen and (min-width: 1700px) {
   .about-us .block .white-rectangle {
-    right: 27%;
+    right: 21%;
   }
 }
 
 .about-us .block .gold-frame {
   position: absolute;
-  height: 240px;
-  width: 400px;
-  top: 60px;
+  height: 270px;
+  width: 300px;
+  top: 75px;
   right: 27%;
   padding: 50px;
   text-align: left;
@@ -371,16 +393,14 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
 
 @media screen and (max-width: 700px) {
   .about-us .block .gold-frame {
-    padding: 20px;
-    width: 73%;
-    text-align: center;
-    right: 2%;
+    visibility: hidden;
   }
 }
 
 @media screen and (min-width: 1700px) {
   .about-us .block .gold-frame {
-    right: 35%;
+    right: 24%;
+    width: 500px;
   }
 }
 
@@ -426,7 +446,19 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
   }
 }
 
+.menu .menu-items .animate-left {
+  -webkit-animation: from-left 1s;
+          animation: from-left 1s;
+}
+
+.menu .menu-items .animate-right {
+  -webkit-animation: from-right 1s;
+          animation: from-right 1s;
+}
+
 .menu .menu-items .menu-item {
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 5fr;
@@ -457,8 +489,8 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
 .menu .menu-items .menu-item .circular-thumbnail {
   border-radius: 50%;
   overflow: hidden;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
 .menu .menu-items .menu-item .circular-thumbnail .horizontal {
@@ -737,5 +769,83 @@ button {
 
 .logo img {
   width: 100%;
+}
+
+@-webkit-keyframes upword {
+  from {
+    -webkit-transform: translate(-30px, 0);
+            transform: translate(-30px, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes upword {
+  from {
+    -webkit-transform: translate(-30px, 0);
+            transform: translate(-30px, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes from-left {
+  from {
+    -webkit-transform: translate(-20%, 0);
+            transform: translate(-20%, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes from-left {
+  from {
+    -webkit-transform: translate(-20%, 0);
+            transform: translate(-20%, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes from-right {
+  from {
+    -webkit-transform: translate(20%, 0);
+            transform: translate(20%, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes from-right {
+  from {
+    -webkit-transform: translate(20%, 0);
+            transform: translate(20%, 0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=style.css.map */

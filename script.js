@@ -65,9 +65,78 @@ class Slider {
     }
 }
 
+function scrollToElement(elementName) {
+
+    document.querySelector(elementName).scrollIntoView({
+        behavior: 'smooth'
+    });
+
+}
+
+function calculateTop(el) {
+
+    _top = 0;
+    do {
+        _top = _top + el.offsetTop;
+        el = el.offsetParent;
+    }
+    while (el != document.body)
+
+    return _top;
+}
+
+function animateElements() {
+
+    menuItems = document.querySelectorAll('.menu-item');
+
+    for (let [index, menuItem] of menuItems.entries()) {
+        if (window.pageYOffset + window.innerHeight > calculateTop(menuItem)) {
+            if (index % 2 == 0) {
+                menuItem.classList.add('animate-left');
+            } else {
+                menuItem.classList.add('animate-right');
+            }
+        } else {
+            menuItem.classList.remove('animate-left');
+            menuItem.classList.remove('animate-right');
+        }
+    }
+}
+
+
+var getAbsPosition = function (el) {
+    var el2 = el;
+    var curtop = 0;
+    var curleft = 0;
+    if (document.getElementById || document.all) {
+        do {
+            curleft += el.offsetLeft - el.scrollLeft;
+            curtop += el.offsetTop - el.scrollTop;
+            el = el.offsetParent;
+            el2 = el2.parentNode;
+            while (el2 != el) {
+                curleft -= el2.scrollLeft;
+                curtop -= el2.scrollTop;
+                el2 = el2.parentNode;
+            }
+        } while (el.offsetParent);
+
+    } else if (document.layers) {
+        curtop += el.y;
+        curleft += el.x;
+    }
+    return curtop;
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     const slide = new Slider();
     slide.createSlider();
     slide.createCheckboxes();
     slide.changeSlide(0);
+    // menuItems = document.querySelectorAll('.white-rectangle');
+    // calculateTop(menuItems[0]);
+    window.onscroll = function () {
+        animateElements();
+    };
+
 });
