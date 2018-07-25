@@ -73,21 +73,19 @@ function scrollToElement(elementName) {
 
 }
 
-function calculateTop(el) {
+function calculateTop(element) {
 
     _top = 0;
     do {
-        _top = _top + el.offsetTop;
-        el = el.offsetParent;
+        _top = _top + element.offsetTop;
+        element = element.offsetParent;
     }
-    while (el != document.body)
+    while (element != document.body)
 
     return _top;
 }
 
-function animateElements() {
-
-    menuItems = document.querySelectorAll('.menu-item');
+function animateElements(menuItems, sections) {
 
     for (let [index, menuItem] of menuItems.entries()) {
         if (window.pageYOffset + window.innerHeight > calculateTop(menuItem)) {
@@ -101,6 +99,23 @@ function animateElements() {
             menuItem.classList.remove('animate-right');
         }
     }
+
+    for (let section of sections) {
+
+        if (window.pageYOffset + window.innerHeight - 200 > calculateTop(section)) {
+            [].slice.call(section.children).forEach(child => {
+                child.classList.add('animate-up')
+            })
+
+        }
+        // else {
+        //     [].slice.call(section.children).forEach(child => {
+        //         child.classList.remove('animate-up')
+        //     })
+        // }
+
+    }
+
 }
 
 
@@ -133,10 +148,15 @@ document.addEventListener("DOMContentLoaded", function () {
     slide.createSlider();
     slide.createCheckboxes();
     slide.changeSlide(0);
-    // menuItems = document.querySelectorAll('.white-rectangle');
-    // calculateTop(menuItems[0]);
+
+
+    menuItems = document.querySelectorAll('.menu-item');
+    sections = document.querySelectorAll('section');
+    buttons = document.querySelectorAll('button');
+
+    console.log(sections);
     window.onscroll = function () {
-        animateElements();
+        animateElements(menuItems, sections);
     };
 
 });

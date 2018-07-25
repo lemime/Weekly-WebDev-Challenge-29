@@ -81,6 +81,10 @@ header {
   padding-bottom: 50px;
 }
 
+section > * {
+  visibility: hidden;
+}
+
 header {
   padding-bottom: 0px;
 }
@@ -446,16 +450,6 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
   }
 }
 
-.menu .menu-items .animate-left {
-  -webkit-animation: from-left 1s;
-          animation: from-left 1s;
-}
-
-.menu .menu-items .animate-right {
-  -webkit-animation: from-right 1s;
-          animation: from-right 1s;
-}
-
 .menu .menu-items .menu-item {
   -webkit-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
@@ -751,8 +745,10 @@ input {
 }
 
 button {
+  z-index: 1;
   background-color: #e4bb7a;
   border: none;
+  position: relative;
   text-transform: uppercase;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
@@ -760,6 +756,18 @@ button {
   font-size: 14px;
   padding: 15px 20px;
   margin: 3px 5px;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  background-color: #CF8A52;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
 }
 
 .logo {
@@ -773,26 +781,26 @@ button {
 
 @-webkit-keyframes upword {
   from {
-    -webkit-transform: translate(-30px, 0);
-            transform: translate(-30px, 0);
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
     opacity: 0;
   }
   to {
-    -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
     opacity: 1;
   }
 }
 
 @keyframes upword {
   from {
-    -webkit-transform: translate(-30px, 0);
-            transform: translate(-30px, 0);
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
     opacity: 0;
   }
   to {
-    -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
     opacity: 1;
   }
 }
@@ -847,5 +855,21 @@ button {
             transform: translate(0, 0);
     opacity: 1;
   }
+}
+
+.animate-left {
+  -webkit-animation: from-left 1s;
+          animation: from-left 1s;
+}
+
+.animate-right {
+  -webkit-animation: from-right 1s;
+          animation: from-right 1s;
+}
+
+.animate-up {
+  -webkit-animation: upword 2s;
+          animation: upword 2s;
+  visibility: visible;
 }
 /*# sourceMappingURL=style.css.map */
