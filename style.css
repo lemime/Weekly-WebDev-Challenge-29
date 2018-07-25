@@ -138,6 +138,18 @@ header .navbar-navigation {
   transition: height 0.4s;
 }
 
+@media screen and (max-width: 350px) {
+  header .navbar-navigation {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    text-align: center;
+  }
+}
+
 header .nav-element {
   margin: 25px 20px;
   cursor: pointer;
@@ -312,6 +324,7 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
 }
 
 #about-us .block {
+  position: relative;
   width: 70%;
   height: 450px;
   display: -ms-grid;
@@ -356,14 +369,27 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
   position: absolute;
   height: 225px;
   width: 560px;
-  top: 100px;
-  right: 3%;
+  top: 63px;
+  right: -14%;
   padding: 50px;
   text-align: left;
   background-color: white;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 350px) {
+  #about-us .block .white-rectangle {
+    top: 0;
+    padding: 50px 30px;
+    width: 73%;
+    height: auto;
+    text-align: center;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 350px) and (max-width: 700px) {
   #about-us .block .white-rectangle {
     padding: 50px 30px;
     width: 73%;
@@ -377,7 +403,7 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
 
 @media screen and (min-width: 1700px) {
   #about-us .block .white-rectangle {
-    right: 21%;
+    right: 10%;
   }
 }
 
@@ -385,7 +411,7 @@ header .toggle:checked ~ .navbar .hamburger-icon::after {
   position: absolute;
   height: 270px;
   width: 300px;
-  top: 75px;
+  top: 40px;
   right: 27%;
   padding: 50px;
   text-align: left;
@@ -788,7 +814,7 @@ button:hover {
   transition: box-shadow 0.5s, border 0.5s, -webkit-box-shadow 0.5s;
 }
 
-input:invalid {
+input:invalid:focus {
   border-color: #990033;
   -webkit-box-shadow: inset 2px 2px 13px 0px rgba(153, 0, 51, 0.2);
           box-shadow: inset 2px 2px 13px 0px rgba(153, 0, 51, 0.2);
@@ -924,5 +950,39 @@ input:invalid {
   -webkit-animation: upword 2s;
           animation: upword 2s;
   visibility: visible;
+}
+
+@media screen and (max-width: 350px) {
+  .white-rectangle {
+    top: 0;
+    padding: 50px 30px;
+    width: 73%;
+    height: auto;
+    text-align: center;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+  h1 {
+    font-size: 18px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  #subscribe .block form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .navbar-navigation {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -21,6 +21,7 @@ $buttons-hover-color: #CF8A52;
 $break-large: 1700px;
 $break-medium: 1100px;
 $break-small: 700px;
+$break-mini: 350px;
 body {
     margin: 0;
 }
@@ -116,6 +117,11 @@ header {
         @include name-font(600,
         12px);
         transition: height 0.4s;
+        @media screen and (max-width: $break-mini) {
+            flex-direction: column;
+            flex-wrap: nowrap;
+            text-align: center;
+        }
     }
     .nav-element {
         margin: 25px 20px;
@@ -250,6 +256,7 @@ header {
     overflow: hidden;
     background-color: $background-light-gray;
     .block {
+        position: relative;
         width: 70%;
         height: 450px;
         display: grid;
@@ -281,12 +288,22 @@ header {
             position: absolute;
             height: 225px;
             width: 560px;
-            top: 100px;
-            right: 3%;
+            top: 63px;
+            right: -14%;
             padding: 50px;
             text-align: left;
             background-color: white;
-            @media screen and(max-width: $break-small) {
+            @media screen and (max-width: $break-mini) {
+                top: 0;
+                padding: 50px 30px;
+                width: 73%;
+                height: auto;
+                text-align: center;
+                right: 0;
+                left: 0;
+                margin: auto;
+            }
+            @media screen and (min-width: $break-mini) and (max-width: $break-small) {
                 padding: 50px 30px;
                 width: 73%;
                 height: auto;
@@ -296,14 +313,14 @@ header {
                 margin: auto;
             }
             @media screen and(min-width: $break-large) {
-                right: 21%;
+                right: 10%;
             }
         }
         .gold-frame {
             position: absolute;
             height: 270px;
             width: 300px;
-            top: 75px;
+            top: 40px;
             right: 27%;
             padding: 50px;
             text-align: left;
@@ -567,7 +584,7 @@ button:hover {
     transition: box-shadow 0.5s, border 0.5s;
 }
 
-input:invalid {
+input:invalid:focus {
     border-color: rgba(153, 0, 51, 1);
     box-shadow: inset 2px 2px 13px 0px rgba(153, 0, 51, 0.2);
 }
@@ -644,4 +661,30 @@ input:invalid {
 .animate-up {
     animation: upword 2s;
     visibility: visible;
+}
+
+@media screen and (max-width: $break-mini) {
+    .white-rectangle {
+        top: 0;
+        padding: 50px 30px;
+        width: 73%;
+        height: auto;
+        text-align: center;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
+    h1 {
+        font-size: 18px;
+    }
+    h2 {
+        font-size: 25px;
+    }
+    #subscribe .block form {
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar-navigation {
+        flex-direction: column;
+    }
 }
