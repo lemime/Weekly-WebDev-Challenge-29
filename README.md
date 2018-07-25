@@ -2,8 +2,8 @@
 
 ## Weekly WebDev Challenge
 Weekly WebDev Challenge is a facebook group where every week new website layout is added. Everyone can download .psd file and try to code website in technologies determined in the challenge. You can show your work to group members and got code review and advice. 
-[Here][google drive] are all aviliable layouts.
-[Facebook group.][facebook]
+-[Here][google drive] are all available layouts.
+-[Facebook group.][facebook]
 
 ## Technologies used
   - HTML5
