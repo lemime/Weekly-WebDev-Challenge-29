@@ -20,11 +20,11 @@
         <div class="navbar">
             <div class="navbar-navigation">
                 <div class="nav-element">Home</div>
-                <div class="nav-element" onclick="scrollToElement('.reservation')">Reservation</div>
-                <div class="nav-element" onclick="scrollToElement('.menu')">Menu</div>
-                <div class="nav-element">Blog</div>
-                <div class="nav-element">Features</div>
-                <div class="nav-element">Contact</div>
+                <div class="nav-element" href="#reservation" onclick="scrollToElement('#reservation')">Reservation</div>
+                <div class="nav-element" href="#menu" onclick="scrollToElement('#menu')">Menu</div>
+                <div class="nav-element" href="#reviews" onclick="scrollToElement('#reviews')">Blog</div>
+                <div class="nav-element" href="#our-chefs" onclick="scrollToElement('#our-chefs')">Staff</div>
+                <div class="nav-element" href="#subscribe" onclick="scrollToElement('#subscribe')">Contact</div>
             </div>
             <label for="more" class="nav-element hamburger-icon"></label>
         </div>
@@ -76,7 +76,7 @@
             <i class="fa fa fa-fire "></i>
         </div>
     </header>
-    <section class="about-us ">
+    <section id="about-us">
         <div class="block ">
             <div class="rectangle rectangle--first">
 
@@ -94,7 +94,7 @@
             <div class="gold-frame "></div>
         </div>
     </section>
-    <section class="menu ">
+    <section id="menu">
         <h2>Steakville</h2>
         <h1>Our menu</h1>
         <div class="description ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -234,7 +234,7 @@
 
         </div>
     </section>
-    <section class="reservation ">
+    <section id="reservation">
         <h2>Reservation</h2>
         <h1>Book a Table</h1>
         <div class="description ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -242,7 +242,7 @@
             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
         <button>Book a table</button>
     </section>
-    <section class="opening-hours ">
+    <section id="opening-hours">
         <h2>Your Welcome</h2>
         <h1>opening hours</h1>
         <div class="block ">
@@ -268,7 +268,7 @@
         </div>
 
     </section>
-    <section class="our-chefs ">
+    <section id="our-chefs">
         <h2>Our Staff</h2>
         <h1>meet our chefs</h1>
         <div class="chefs ">
@@ -328,7 +328,7 @@
 
         </div>
     </section>
-    <section class="reviews ">
+    <section id="reviews">
         <h2>Our Best Clients</h2>
         <h1>HAPPY CUSTOMERS</h1>
         <img class="arrow " src="img/Arrow1.png ">
@@ -340,13 +340,14 @@
         </p>
         <p class="accent-text">Movie Critic</p>
     </section>
-    <section class="subscribe">
+    <section id="subscribe">
         <p class="name-text">SUBSCRIBE TO OUR NEWSLETTER</p>
         <img class="arrow" src="img/Arrow1.png">
         <div class="block">
-            <input name="Email">
-            <button>SUBSCRIBE</button>
-
+            <form onsubmit="subscribe()">
+                <input class="subscribe-input" type="email" placeholder="Email" />
+                <button type="submit">SUBSCRIBE</button>
+            </form>
         </div>
     </section>
 

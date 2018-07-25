@@ -108,40 +108,30 @@ function animateElements(menuItems, sections) {
             })
 
         }
-        // else {
-        //     [].slice.call(section.children).forEach(child => {
-        //         child.classList.remove('animate-up')
-        //     })
-        // }
+    }
+}
 
+function subscribe() {
+    event.preventDefault();
+    snackbar = document.createElement('div');
+    snackbar.classList.add('snackbar');
+    text = document.createTextNode("You have successfully subscribed to the newsletter!")
+    snackbar.appendChild(text);
+
+    if (document.querySelector('.snackbar') == null) {
+        document.querySelector('body').appendChild(snackbar);
+        setTimeout(function () {
+            snackbar.classList.add('snackbar-active');
+            setTimeout(function () {
+                snackbar.classList.remove('snackbar-active');
+                setTimeout(function () {
+                    document.querySelector('body').removeChild(document.querySelector('.snackbar'));
+                }, 1000);
+            }, 3000);
+        }, 100);
     }
 
 }
-
-
-var getAbsPosition = function (el) {
-    var el2 = el;
-    var curtop = 0;
-    var curleft = 0;
-    if (document.getElementById || document.all) {
-        do {
-            curleft += el.offsetLeft - el.scrollLeft;
-            curtop += el.offsetTop - el.scrollTop;
-            el = el.offsetParent;
-            el2 = el2.parentNode;
-            while (el2 != el) {
-                curleft -= el2.scrollLeft;
-                curtop -= el2.scrollTop;
-                el2 = el2.parentNode;
-            }
-        } while (el.offsetParent);
-
-    } else if (document.layers) {
-        curtop += el.y;
-        curleft += el.x;
-    }
-    return curtop;
-};
 
 document.addEventListener("DOMContentLoaded", function () {
     const slide = new Slider();
@@ -149,12 +139,16 @@ document.addEventListener("DOMContentLoaded", function () {
     slide.createCheckboxes();
     slide.changeSlide(0);
 
-
     menuItems = document.querySelectorAll('.menu-item');
     sections = document.querySelectorAll('section');
     buttons = document.querySelectorAll('button');
 
-    console.log(sections);
+
+    document.querySelector(".subscribe-input").addEventListener("invalid",
+        function (event) {
+            event.preventDefault();
+        });
+
     window.onscroll = function () {
         animateElements(menuItems, sections);
     };

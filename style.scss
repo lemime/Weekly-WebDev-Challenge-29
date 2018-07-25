@@ -3,6 +3,14 @@
     src: url('fonts/WildYouth-Regular.otf') format('opentype');
 }
 
+@mixin name-font($font-wight: 700,
+$font-size: 13px) {
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: $font-wight;
+    font-size: $font-size;
+}
+
 $background-dark-gray: #1a1a1a;
 $background-medium-gray: #292929;
 $background-light-gray: #e2e2e2;
@@ -18,13 +26,7 @@ body {
 }
 
 h1 {
-    text-align: center;
-    text-transform: uppercase;
-    font: {
-        family: 'Montserrat', sans-serif;
-        weight: 700;
-        size: 23pt;
-    }
+    @include name-font($font-size: 23px);
     letter-spacing: 5px;
     margin-top: 0;
 }
@@ -41,28 +43,25 @@ h2 {
 }
 
 .name-text {
-    text-transform: uppercase;
+    @include name-font();
     letter-spacing: 1pt;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
     margin-bottom: 0;
     margin-top: 0;
 }
 
 .accent-text {
     font-family: 'Average', sans-serif;
-    margin-top: 3px;
     font-size: 13px;
     color: $text-accent-color;
+    margin-top: 3px;
     margin-bottom: 0;
     margin-top: 0;
 }
 
 .description {
     font-family: 'Average', sans-serif;
-    line-height: 1.6;
     font-size: 15px;
+    line-height: 1.6;
     text-align: center;
     width: 550px;
     margin: 0 0 50px 0;
@@ -114,10 +113,8 @@ header {
         flex-wrap: wrap;
         height: 65px;
         overflow: hidden;
-        text-transform: uppercase;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 12px;
-        font-weight: 600;
+        @include name-font(600,
+        12px);
         transition: height 0.4s;
     }
     .nav-element {
@@ -248,7 +245,7 @@ header {
     }
 }
 
-.about-us {
+#about-us {
     position: relative;
     overflow: hidden;
     background-color: $background-light-gray;
@@ -334,7 +331,7 @@ header {
     }
 }
 
-.menu {
+#menu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -354,9 +351,8 @@ header {
                 display: flex;
                 justify-content: space-between;
                 .price {
-                    font-family: 'Montserrat', sans-serif;
-                    font-weight: 600;
-                    font-size: 14px;
+                    @include name-font(600,
+                    14px);
                     margin-right: 15px;
                     margin-left: 15px;
                 }
@@ -394,7 +390,7 @@ header {
     }
 }
 
-.opening-hours {
+#opening-hours {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -461,7 +457,7 @@ header {
     }
 }
 
-.our-chefs {
+#our-chefs {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -515,7 +511,7 @@ header {
     }
 }
 
-.subscribe {
+#subscribe {
     background-color: $background-extra-light-gray;
     padding: 80px 0;
     .block {
@@ -537,23 +533,19 @@ input {
 }
 
 button {
+    @include name-font();
     z-index: 1;
     background-color: $buttons-color;
     border: none;
     position: relative;
-    text-transform: uppercase;
     cursor: pointer;
-    font: {
-        family: 'Montserrat', sans-serif;
-        weight: 600;
-        size: 14px;
-    }
     padding: 15px 20px;
     margin: 3px 5px;
     transition: background-color 0.5s;
 }
 
-button:focus {
+button:focus,
+input:focus {
     outline: 0;
 }
 
@@ -567,6 +559,44 @@ button:hover {
     width: 117px;
     img {
         width: 100%;
+    }
+}
+
+.subscribe-input {
+    border: 1pt solid $background-light-gray;
+    transition: box-shadow 0.5s, border 0.5s;
+}
+
+input:invalid {
+    border-color: rgba(153, 0, 51, 1);
+    box-shadow: inset 2px 2px 13px 0px rgba(153, 0, 51, 0.2);
+}
+
+.snackbar {
+    z-index: 4;
+    @include name-font(600,
+    11px);
+    padding: 15px;
+    background-color: $buttons-color;
+    position: fixed;
+    bottom: -50px;
+    left: 20px;
+    transition: bottom 0.5s ease-out;
+    @media screen and (max-width: $break-small) {
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.snackbar-active {
+    bottom: 20px;
+    transition: bottom 0.5s ease-out;
+    @media screen and (max-width: $break-small) {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
     }
 }
 
